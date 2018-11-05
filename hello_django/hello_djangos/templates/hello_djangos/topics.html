@@ -1,0 +1,22 @@
+{% extends "hello_djangos/base.html" %}
+
+{% block header %}
+  <h1>Topics</h1>
+{% endblock header %}
+
+{% block content %}
+  <p>Topics</p>
+  <ul>
+      {% for topic in topics %}
+        <li>
+            <h3>
+                <a href="{% url 'hello_djangos:topic' topic.id %}">{{ topic }}</a>
+            </h3>
+        </li>
+      {% empty %}
+        <li>No topics have been addedd yet.</li>
+      {% endfor %}
+  </ul>
+
+  <h3><a href="{% url 'hello_djangos:new_topic' %}">Add a new topic:</a></h3>
+{% endblock content %}
